@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: page">
+
+<head>
+    <meta property="og:image" content="/img/logo.png" th:content="@{/img/logo.png}" />
+
+    <title >My Web App</title>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+            var msg = /*[[${msg}]]*/ [];
+            var about = /*[[${about}]]*/ [];
+
+/*]]>*/
+</script>
+</head>
+    <body>
+        <div class="main">
+            <div class="home__rp"></div>
+            <h2>Hello fraoucene</h2>
+            <div th:text="${msg}"></div>
+            <div th:text="${about}"></div>
+            <div class="socials__rp"></div>
+
+        </div>
+    </body>
+<script  th:src="@{/js/index.js}" th:fragment="page-js" ></script>
+</html>

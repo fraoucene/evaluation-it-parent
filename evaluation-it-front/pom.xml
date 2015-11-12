@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+        <groupId>evaluation-it</groupId>
+        <artifactId>evaluation-it</artifactId>
+        <parent>
+            <groupId>evaluation-it-parent</groupId>
+            <artifactId>evaluation-it-parent</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </parent>
+        <packaging>war</packaging>
+    <!--<packaging>pom</packaging>
+    <version>1.0</version>-->
+       <!-- <name>Evaluation IT app template</name>-->
+        <url>http://about-java.com</url>
+        <properties>
+
+            <!-- Dependency Versions -->
+            <thymeleaf.version>2.1.2.RELEASE</thymeleaf.version>
+
+
+             <springframework.version>4.0.6.RELEASE</springframework.version>
+             <jackson.version>2.3.1</jackson.version>
+
+
+        </properties>
+        <dependencies>
+            <dependency>
+                <groupId>evaluation-it-metier</groupId>
+                <artifactId>evaluation-it-metier</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>4.0.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring4</artifactId>
+                <version>${thymeleaf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.resthub</groupId>
+                <artifactId>springmvc-router</artifactId>
+                <version>1.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>16.0.1</version>
+                <scope>provided</scope>
+            </dependency>
+
+        </dependencies>
+
+    <build>
+        <finalName>evaluation-it</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

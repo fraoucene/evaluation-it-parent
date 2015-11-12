@@ -1,0 +1,49 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                           http://www.springframework.org/schema/task
+                           http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+
+    <!-- Define Master Properties Bean -->
+    <bean id="evaluationITProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>file:${evaluation.it.conf.dir}/fraoucene-evaluation-it.properties</value>
+            <!--<value>file:C:/Users/fraoucene/Desktop/workspace/config/fraoucene-evaluation-it.properties</value>-->
+            </list>
+        </property>
+    </bean>
+
+<context:property-placeholder properties-ref="evaluationITProperties"
+                      ignore-resource-not-found="false"
+                      ignore-unresolvable="false"/>
+
+<import resource="classpath:spring/context-dao.xml" />
+
+<!-- **************************************************************** -->
+    <!-- SPRING ANNOTATION PROCESSING -->
+    <!-- **************************************************************** -->
+
+    <context:component-scan base-package="com.fraoucene.evaluation.it.dao.services" />
+    <context:component-scan base-package="com.fraoucene.evaluation.it.metier" />
+
+    <!-- **************************************************************** -->
+    <!-- MESSAGE EXTERNALIZATION/INTERNATIONALIZATION -->
+    <!-- Standard Spring MessageSource implementation -->
+    <!-- ****************************************************************
+    <bean id="messageSource"
+          class="fr.sacem.webmo.nf.domain.service.impl.CustomMessageSource">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="basenames">
+            <list>
+                <value>internationalisation/messages</value>
+            </list>
+        </property>
+    </bean>-->
+
+</beans>

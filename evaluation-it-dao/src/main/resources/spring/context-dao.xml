@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
+
+
+    <context:property-placeholder properties-ref="evaluationITProperties"
+                                  ignore-resource-not-found="false"
+                                  ignore-unresolvable="false"/>
+
+
+    <!-- The package is in an another maven project evaluation-it -->
+    <jpa:repositories base-package="com.fraoucene.evaluation.it.dao.repositories"/>
+
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+            <property name="driverClassName" value="${evaluation.it.db.jdbc.driver}"/>
+            <property name="url" value="${evaluation.it.db.jdbc.url}"/>
+            <property name="username" value="${evaluation.it.db.jdbc.username}"/>
+            <property name="password" value="${evaluation.it.db.jdbc.password}"/>
+        </bean>
+
+
+        <!-- Obtaining a connection with a DriverManagerDataSource bean with connection parameters -->
+    <!--  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+          <property name="driverClassName" value="org.postgresql.Driver"/>
+          <property name="url" value="jdbc:postgresql://localhost:5432/evaluation_it"/>
+          <property name="username" value="evaluation_it"/>
+          <property name="password" value="evaluation_it"/>
+      </bean>
+  -->
+      <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+
+      <!-- The annotated POJOs are managed by an entity manager -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="persistenceXmlLocation" value="classpath:persistence.xml"/>
+        <property name="persistenceUnitName" value="tracklist"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
+
+                <!--
+                true: Enable the logging of all the generated SQL statements (from HQL) to the console
+                false: Not output
+                -->
+                <prop key="hibernate.show_sql">true</prop>
+
+                <!--
+                true: Format the generated SQL statement to make it more readable, but takes up more screen space.
+                false: Not formatted
+                -->
+                <prop key="hibernate.format_sql">true</prop>
+
+                <!--
+                    NE PAS TOUCHER LAISSER VALIDATE !!! LAISSER LES CREATION / MAJ A LIQUIBASE
+                    validate: validate the schema, makes no changes to the database. (pas de changement avec la base actuelle)
+                    update: update the schema. (ajout nouvelle colonne sans perte de données)
+                    create: creates the schema, destroying previous data.
+                    create-drop: drop the schema at the end of the session.
+                -->
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+
+                <!-- Enable the second-level cache provider -->
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+
+                <!-- activate the Hibernate query cache -->
+                <prop key="hibernate.cache.use_query_cache">false</prop>
+
+                <!-- Telling hibernate we are using EhCache -->
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+
+                <!-- Caching is enabled for all entities for Cacheable(true) is specified. -->
+                <prop key="javax.persistence.sharedCache.mode">ENABLE_SELECTIVE</prop>
+
+                <!-- TODO add documentation -->
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+
+            </props>
+        </property>
+
+    </bean>
+
+    <!-- A transactionalManager is associated to a entityManagerFactory -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+</beans>

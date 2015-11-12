@@ -1,0 +1,14 @@
+{
+    "strict": true,
+    "curly": true,
+    "eqeqeq": true,
+    "freeze": true,
+    "immed": true,
+    "latedef": true,
+    "noempty": true,
+    "undef": true,
+    "unused": true,
+    "browser": true,
+    "node": true,
+    "newcap": false
+}

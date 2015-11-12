@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="tracklist" transaction-type="RESOURCE_LOCAL">
+
+        <!-- Provider specification -->
+        <jta-data-source>java:/comp/env/jdbc/postgres</jta-data-source>
+
+        <!-- Those beans are linked to the database -->
+        <class>com.fraoucene.evaluation.it.api.model.Categories</class>
+        <class>com.fraoucene.evaluation.it.api.model.Choices</class>
+        <class>com.fraoucene.evaluation.it.api.model.QuestionMultiChoices</class>
+        <class>com.fraoucene.evaluation.it.api.model.Questions</class>
+    </persistence-unit>
+</persistence>

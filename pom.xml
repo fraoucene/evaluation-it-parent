@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>evaluation-it-parent</groupId>
+    <artifactId>evaluation-it-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Evaluation IT app template</name>
+
+    <properties>
+        <!-- Default project properties -->
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- vaut true car Spring utilise de l'introspection qui nécessite les
+            infos de debug pour resoudres les @PathVariable sans valeur. Bien qu'on les
+            spécifie explicitement, on évite les mauvaises surprises en cas d'oubli -->
+        <maven.compiler.debug>true</maven.compiler.debug>
+
+        <springframework.version>4.0.6.RELEASE</springframework.version>
+        <jackson.version>2.3.1</jackson.version>
+        <google.guava.version>16.0.1</google.guava.version>
+        <joda.time.version>2.3</joda.time.version>
+        <slf4j.version>1.7.6</slf4j.version>
+        <liquibase.version>3.1.1</liquibase.version>
+        <junit.version>4.11</junit.version>
+        <liquibase-driver>org.postgresql.Driver</liquibase-driver>
+        <liquibase-url>jdbc:postgresql://localhost:5432/evaluation_it</liquibase-url>
+        <liquibase-testurl>jdbc:postgresql://localhost:5432/evaluation_it_test</liquibase-testurl>
+        <liquibase-changelog-schema>evaluation_it</liquibase-changelog-schema>
+        <liquibase-username>evaluation_it</liquibase-username>
+        <liquibase-password>evaluation_it</liquibase-password>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- ============================================= -->
+        <!-- UTILS -->
+        <!-- ============================================= -->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google.guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.time.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>evaluation-it-parent</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>evaluation-it-front</module>
+        <module>evaluation-it-api</module>
+        <module>evaluation-it-dao</module>
+        <module>evaluation-it-metier</module>
+    </modules>
+</project>

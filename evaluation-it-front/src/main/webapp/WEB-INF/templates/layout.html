@@ -1,0 +1,103 @@
+<th:block xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          th:fragment="page">
+
+    <th:block th:utext="${'&lt;!DOCTYPE html>'}"></th:block>
+
+    <!--[if IE 8]>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="ie8" lang="fr"> <![endif]-->
+    <!--[if IE 9]>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="ie9" lang="fr"> <![endif]-->
+    <!--[if gt IE 9]><!-->
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
+    <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <div th:replace="this :: meta"></div>
+
+    <title th:replace="this :: title">FRAOUCENE</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/evaluation-it.css" th:href="@{/css/evaluation-it.css}" />
+    <link rel="stylesheet" type="text/css" media="print" href="../../css/evaluation-it-print.css" th:href="@{/css/evaluation-it-print.css}" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/base.css" th:href="@{/css/base.css}" />
+    <link th:replace="this :: custom-css-1" />
+    <link th:replace="this :: custom-css-2" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+
+    <!-- web-app-front -->
+    <link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Jura:400,500,600,300' rel='stylesheet' type='text/css' />
+    <script src="../../js/web-app-front/jquery-1.8.0.min.js" type="text/javascript" th:src="@{/js/web-app-front/jquery-1.8.0.min.js}"></script>
+    <script src="../../js/web-app-front/jquery.touchwipe.1.1.1.js" type="text/javascript" th:src="@{/js/web-app-front/jquery.touchwipe.1.1.1.js}"></script>
+    <script src="../../js/web-app-front/jquery.carouFredSel-5.5.0-packed.js" type="text/javascript" th:src="@{/js/web-app-front/jquery.carouFredSel-5.5.0-packed.js}"></script>
+    <!--[if lt IE 9]>
+    <script src="../../js/web-app-front/modernizr.custom.js " type="text/javascript" th:src="@{/js/web-app-front/modernizr.custom.js}"></script>
+    <![endif]-->
+    <script src="../../js/web-app-front/functions.js" type="text/javascript" th:src="@{/js/web-app-front/functions.js}"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Latest compiled and minified JavaScript -->
+
+
+    <th:block th:utext="${head}"></th:block>
+
+    <th:block th:utext="${'&lt;!--[if lt IE 9]>'}"></th:block>
+    <script src="../../js/html5shiv.min.js" th:src="@{/js/html5shiv.min.js}"></script>
+    <th:block th:utext="${'&lt;![endif]-->'}"></th:block>
+
+    <script th:replace="this :: inline-js">
+        /*<![CDATA[*/
+            // Inline JavaScript is injected here
+        /*]]>*/
+    </script>
+
+    <th:block th:utext="${bodyScripts}"></th:block>
+
+</head>
+
+<body>
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHC3MG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WHC3MG');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- script commun -->
+    <script src="../../js/common.js" th:src="@{/js/common.js}"></script>
+
+    <!-- header -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <!-- script de la page -->
+    <script th:replace="this :: page-js" src="js/page.js"></script>
+
+    <!-- Corps de la page -->
+    <div class="shell" th:include="this :: body">
+        <pre>
+                __        __   _
+                \ \      / /__| |__  _ __ ___   ___
+                 \ \ /\ / / _ \ '_ \| '_ ` _ \ / _ \
+                  \ V  V /  __/ |_) | | | | | | (_) |
+                   \_/\_/ \___|_.__/|_| |_| |_|\___/
+        </pre>
+    </div>
+    <!-- footer -->
+    <div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>
+</th:block>

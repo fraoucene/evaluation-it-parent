@@ -1,0 +1,461 @@
+{
+  "data" :[
+      {
+          "category": "Aide � la D�cision",
+          "qcm": "BO XI 3.0 Web Intelligence avanc�",
+          "duree": 15,
+          "niveau": 3,
+          "langue": "fr",
+          "description": "Il n'y a pas de description disponible pour ce test.",
+          "connaissances_mesurees": "",
+          "metiers_vises": "",
+          "questions": [
+              {
+                  "content": "Dans le Client Riche Web Intelligence, l'option � Optional Prompt � est d�finie dans",
+                  "choice_one": "Le Query Panel",
+                  "choice_two": "Le Prompt Panel",
+                  "choice_three": "Le Slice and Dice Panel",
+                  "choice_four": "Les Document Properties",
+                  "choice_one_value": true,
+                  "choice_two_value": false,
+                  "choice_three_value": false,
+                  "choice_four_valeu": false
+              },
+            {
+                  "content": "Est il possible de choisir l'ordre d'affichage des prompts",
+                  "choice_one": "Oui, pour tous les types de prompts.",
+                  "choice_two": "Non, pour tous les types de prompts",
+                  "choice_three": "Oui, pour les prompts d�finis dans l'univers.",
+                  "choice_four": "Oui, pour les prompts d�finis dans la requ�te",
+                  "choice_one_value": true,
+                  "choice_two_value": false,
+                  "choice_three_value": false,
+                  "choice_four_valeu": false
+            },
+            {
+                  "content": "Laquelle des affirmations suivantes est correcte en ce qui concerne les hi�rarchies en Web Intelligence ?",
+                  "choice_one": "Elles peuvent �tre cr��es en utilisant le Query panel.",
+                  "choice_two": "Elles peuvent �tre cr��es en utilisant le Scope of Analysis panel.",
+                  "choice_three": "Elles ne peuvent pas �tre choisies � l'aide d'un Scope of Analysis personnalis�.",
+                  "choice_four": "Elles sont utilis�es pour d�finir le chemin d'exploration dans le Scope of Analysis.",
+                  "choice_one_value": true,
+                  "choice_two_value": false,
+                  "choice_three_value": false,
+                  "choice_four_valeu": false
+            },
+            {
+                "content": "On utilise InfoView",
+                "choice_one": "Surtout pour l'administration du contenu.",
+                "choice_two": "Exclusivement pour l'affichage des rapports.",
+                "choice_three": "Pour l'affichage d'informations sur les rapports (Encyclopedia et Discussions).",
+                "choice_four": "Pour l'acc�s � l'information et l'administration limit�e du contenu.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "S�lectionnez un avantage de l'ordonnancement des objets en rapport de la liste des valeurs (LOV) � ex�cuter sur une base r�guli�re :",
+                "choice_one": "Il r�duit le temps pour extraire les enregistrements depuis la base de donn�es lors de la visualisation d'un rapport qui utilise un prompt.",
+                "choice_two": "Il r�duit la charge sur l'Output File Repository Server.",
+                "choice_three": "Il r�duit la charge sur l'Input File Repository Server.",
+                "choice_four": "Il r�duit les coups sur les bases de donn�es en utilisant les valeurs enregistr�es lors de la g�n�ration du prompt.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "Dans le Client Riche Web, il n'est pas possible de",
+                "choice_one": "Exporter un document dans la CMC.",
+                "choice_two": "Envoyer un document � un utilisateur.",
+                "choice_three": "Enregistrer un document en tant que fichier Excel.",
+                "choice_four": "Enregistrer un document en tant que fichier PDF.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "S�lectionnez l'expression du contexte de sortie qui n'est pas une expression valide de la syntaxe �tendue",
+                "choice_one": "Where ([State] = �CA�)",
+                "choice_two": "Where Section In [State]",
+                "choice_three": "In Section Where ([State] = �CA�)",
+                "choice_four": "Where ([State]=�CA� And [Year] =�2006�)",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "Lorsque vous ouvrez un document Web Intelligence (WID) avec des donn�es, le bouton Data Tracking (Suivi des donn�es) est gris. Que devezvous faire afin de permettre le formatage des donn�es suivies ?",
+                "choice_one": "Contacter l'administrateur syst�me.",
+                "choice_two": "Modifier le document en mode de suivi.",
+                "choice_three": "Ouvrir le document en mode de suivi.",
+                "choice_four": "Activer le suivi des donn�es dans les propri�t�s du document.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "Lors de l'utilisation des contextes de calcul dans une fonction If(), le contexte valide pour l'utilisation dans une fonction If() est",
+                "choice_one": "Dans la cellule.",
+                "choice_two": "Dans la ligne.",
+                "choice_three": "Dans la colonne.",
+                "choice_four": "Dans le bloc.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "S�lectionnez l'endroit o� peut �tre vue la source de donn�es pour un document construit sur une source de donn�es locale dans l'interface de Web Intelligence Rich Client :",
+                "choice_one": "Les Global Settings",
+                "choice_two": "Les Report Settings",
+                "choice_three": "Les Query Properties",
+                "choice_four": "Les Document Properties",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "Au cas o� vous voulez comparer la performance du chiffre d'affaires des premiers 20% de vos clients � la moyenne de l'ensemble de vos clients, vous d�cidez d'appliquer un classement sur la table qui affiche les clients et les revenus et de cr�er une variable afin d'afficher le chiffre d'affaires moyen pour tous les clients. La fonction qui doit �tre utilis�e dans la variable est la suivante",
+                "choice_one": "NoFilter()",
+                "choice_two": "NoRank()",
+                "choice_three": "AverageAll()",
+                "choice_four": "IgnoreFilter()",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "Dans un bloc de table, il est possible de",
+                "choice_one": "Masquer une colonne avec l'option � Hide �.",
+                "choice_two": "Fusionner une cellule vide avec une cellule contenant une variable.",
+                "choice_three": "D�finir le nombre de colonnes si la table est affich�e sur plus d'une page.",
+                "choice_four": "D�finir sa position par rapport � un autre bloc.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "S�lectionnez le type de contexte de calcul valide",
+                "choice_one": "Le contexte d'entr�e.",
+                "choice_two": "Le contexte logique.",
+                "choice_three": "Le contexte conditionnel.",
+                "choice_four": " Tous.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "S�lectionnez l'affirmation vraie en ce qui concerne l'impact sur les performances du suivi des donn�es sur les temps d'actualisation des rapports, en supposant que les donn�es changent, mais le nombre de lignes extraites et le volume de donn�es restent les m�mes :",
+                "choice_one": "Il sera actualis� jusqu'� trois fois plus rapidement.",
+                "choice_two": "Il sera actualis� jusqu'� trois fois plus lentement.",
+                "choice_three": "Il sera actualis� plus rapidement chaque fois que le rapport sera actualis�.",
+                "choice_four": " Il sera actualis� plus lentement chaque fois que le rapport sera actualis�.",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            },
+            {
+                "content": "Lorsque vous travaillez avec un ensemble de recettes des magasins, tous les magasins ont des valeurs positives de revenus. S�lectionnez la formule qui doit �tre utilis�e afin d'afficher la valeur de la variance de la mesure du revenu dans le document lorsque le suivi de donn�es est actif",
+                "choice_one": "=[Revenue]/RefValue([Revenue])",
+                "choice_two": "=[Revenue]/PreValue([Revenue])",
+                "choice_three": "=[Revenue]/HistValue([Revenue])",
+                "choice_four": "=[Revenue]/BaseValue([Revenue])",
+                "choice_one_value": true,
+                "choice_two_value": false,
+                "choice_three_value": false,
+                "choice_four_valeu": false
+            }
+          ]
+      },
+    {
+      "category": "",
+      "qcm": "BOXI 3.0 Web Intelligence interm�diaire",
+      "duree": 15,
+      "balance": "",
+      "niveau": 2,
+      "langue": "fr",
+
+      "description": "Quiz BO XI 3.0 Web Intelligence niveau interm�diaire",
+      "connaissances_mesurees": "",
+      "metiers_vises": "",
+      "questions": [
+        {
+          "content": "Dans un Client Riche Web, il est possible de",
+          "choice_one": "Modifier un univers.",
+          "choice_two": "Changer la connexion d'un univers.",
+          "choice_three": "Actualiser un univers.",
+          "choice_four": "Exporter un univers.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez la m�thode qui devrait �tre utilis�e pour grouper les filtres d'une requ�te afin de former une d�claration AND",
+          "choice_one": "Glisser les filtres des requ�tes dans le panneau Group.",
+          "choice_two": "Changer la connexion d'un univers.",
+          "choice_three": "S�lectionner les filtres, cliquer droit et s�lectionner Group.",
+          "choice_four": "S�lectionner les filtres, ensuite cliquer sur le bouton Group Filters sur la barre d'outils.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Une variable Web Intelligence est stock�e",
+          "choice_one": "Dans la cellule.",
+          "choice_two": "Dans le document.",
+          "choice_three": "Dans le Metadata Cube.",
+          "choice_four": "Dans le Central Management Server (CMS).",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez quelles propri�t�s break peuvent �tre utilis�es quand vous �tablissez la Break Priority",
+          "choice_one": "Order Breaks.",
+          "choice_two": "Star Breaks.",
+          "choice_three": "Crosstab Breaks.",
+          "choice_four": "Horizontal Breaks.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Dans Infoview, il n'est pas possible de",
+          "choice_one": "Modifier un document WID.",
+          "choice_two": "Modifier tout autre type de document.",
+          "choice_three": "Envoyer un document WID � un utilisateur.",
+          "choice_four": "Sauvegarder un document WID en fichier Excel.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez le calcul qui ne peut pas �tre utilis� dans un objet de mesure dans Web Intelligence",
+          "choice_one": "Min.",
+          "choice_two": "Max.",
+          "choice_three": "Count.",
+          "choice_four": "Count All.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez les types d'objets qui peuvent �tre fusionn�s quand vous utilisez MultiQueries dans un document Web Intelligence (WID)",
+          "choice_one": "Dimension Detail.",
+          "choice_two": "Measure Measure.",
+          "choice_three": "Dimension Measure.",
+          "choice_four": "Dimension Dimension.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez l'�l�ment qui ne fait pas partie du filtre d'une requ�te",
+          "choice_one": "Classe.",
+          "choice_two": "Objet.",
+          "choice_three": "Op�rateur.",
+          "choice_four": "Op�rande.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Quand vous n'�tes pas connect�s au r�f�rentiel, il est possible de",
+          "choice_one": "Modifier un document mais sans l'actualiser.",
+          "choice_two": "Modifier et actualiser un document.",
+          "choice_three": "Ne rien faire.",
+          "choice_four": "Cr�er un nouveau document.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez le message qui appara�t lorsque vous s�lectionnez � Use query drill � et quand le Scope of Analysis est �tabli dans un rapport BusinessObjects Web Intelligence",
+          "choice_one": "Le Scope of Analysis est vide.",
+          "choice_two": "Le Scope of Analysis n'est pas vide.",
+          "choice_three": "Le mode option d'exploration de requ�te est activ�.",
+          "choice_four": "Le mode option d'exploration de requ�te est d�sactiv�.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez le type de fichier de donn�es local qui ne peut pas �tre utilis� pour cr�er un document BusinessObjects Web Intelligence (WID)",
+          "choice_one": "TXT.",
+          "choice_two": "XML.",
+          "choice_three": "CSV.",
+          "choice_four": "XLS.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Que se passetil quand une dimension est d�pos�e dans la partie vide d'un rapport qui contient deux blocs, sans que la touche ALT soit s�lectionn�e ?",
+          "choice_one": "Un nouveau bloc est cr��.",
+          "choice_two": "Une nouvelle section est cr��e.",
+          "choice_three": "Un message d'erreur est affich�.",
+          "choice_four": "La cellule actuellement s�lectionn�e est affich�e.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez quel panneau devrait �tre utilis� pour visualiser un Document Summary d'un document BusinessObjects Web Intelligence (WID)",
+          "choice_one": "Advanced.",
+          "choice_two": "Query.",
+          "choice_three": "Active X.",
+          "choice_four": "La cellule Interactive. s�lectionn�e est affich�e.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Parmi les fen�tres de dialogue suivantes, laquelle devrait �tre utilis�e pour configurer les couleurs des donn�es d'un document lorsque toutes les donn�es sont affich�es en noir ?",
+          "choice_one": "Document Palette.",
+          "choice_two": "Document Formats.",
+          "choice_three": "Display Preferences.",
+          "choice_four": "Data Tracking Options.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez la propri�t� qui n'est pas une Page Layout Option valide dans l'onglet Properties d'un document",
+          "choice_one": "Top margin.",
+          "choice_two": "Left margin.",
+          "choice_three": "Page orientation.",
+          "choice_four": "Background color.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez la m�thode qui peut �tre utilis�e pour construire un tri personnalis� :",
+          "choice_one": "Cliquer droit dans la table, ensuite s�lectionner � Custom Sort �.",
+          "choice_two": "S�lectionner une colonne? sur la barre d'outils, cliquer sur le bouton � Custom Sort �.",
+          "choice_three": "Cliquer droit dans la table, s�lectionner � Sort � et ensuite s�lectionner � Custom Sort �.",
+          "choice_four": "S�lectionner une colonne? sur la barre d'outils, cliquer sur le bouton � Apply Sort � et s�lectionner � Custom Sort �.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "S�lectionnez l'option d'affichage invalide lorsque vous cr�ez des sections dans un rapport",
+          "choice_one": "Relative Position.",
+          "choice_two": "Start on New Page.",
+          "choice_three": "Keep Blocks Together.",
+          "choice_four": "Avoid Page Break dans Section.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Lorsque vous utilisez Web Intelligence dans l'InfoView, l'univers par d�faut peut �tre �tabli dans",
+          "choice_one": "Query Panel.",
+          "choice_two": "Report Panel.",
+          "choice_three": "InfoView Options.",
+          "choice_four": "InfoView Preferences.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Le Client Riche Web Intelligence ne peut pas �tre d�marr� � partir de",
+          "choice_one": "InfoView.",
+          "choice_two": "Command Line.",
+          "choice_three": "Start > All Programs.",
+          "choice_four": "Central Management Console.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Le nombre maximum de blocs qui peuvent �tre cr��s dans un document Web Intelligence document (WID) est de",
+          "choice_one": "1.",
+          "choice_two": "4.",
+          "choice_three": "8.",
+          "choice_four": "Illimit�.",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        }
+      ]
+    },
+    {
+      "category": "test",
+      "qcm": "test",
+      "duree": 30,
+      "niveau": 2,
+      "langue": "fr",
+
+      "description": "test",
+      "connaissances_mesurees": "",
+      "metiers_vises": "",
+      "questions": [
+        {
+          "content": "Question1",
+          "choice_one": "choice 1",
+          "choice_two": "choice 2",
+          "choice_three": "choice 3",
+          "choice_four": "choice 4",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Question2",
+          "choice_one": "choice 1",
+          "choice_two": "choice 2",
+          "choice_three": "choice 3",
+          "choice_four": "choice 4",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        },
+        {
+          "content": "Question3",
+          "choice_one": "choice 1",
+          "choice_two": "choice 2",
+          "choice_three": "choice 3",
+          "choice_four": "choice 4",
+          "choice_one_value": true,
+          "choice_two_value": false,
+          "choice_three_value": false,
+          "choice_four_valeu": false
+        }
+      ]
+    }
+  ]
+}
