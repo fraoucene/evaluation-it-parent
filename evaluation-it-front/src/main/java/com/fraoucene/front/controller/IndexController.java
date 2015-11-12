@@ -24,7 +24,7 @@ public class IndexController {
         ModelAndView mav = new ModelAndView("index");
 
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, List<Map<String,Object>>> qcmJsonData = mapper.readValue(new File("C:/Users/fraoucene/Desktop/workspace/config/data/newQcm.json"), Map.class);
+        Map<String, List<Map<String,Object>>> qcmJsonData = mapper.readValue(new File(qcmJsonPath), Map.class);
 
         String aboutMe = "je suis le plus fort";
 

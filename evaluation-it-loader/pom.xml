@@ -13,4 +13,12 @@
     <groupId>evaluation-it-loader</groupId>
     <artifactId>evaluation-it-loader</artifactId>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>evaluation-it-loader</groupId>
+            <artifactId>evaluation-it-loader</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

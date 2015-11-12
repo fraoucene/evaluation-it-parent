@@ -78,7 +78,7 @@
         <dependency>
             <groupId>evaluation-it-api</groupId>
             <artifactId>evaluation-it-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     <build>

@@ -16,9 +16,9 @@ public class Choices implements Serializable {
     public Choices() {
     }
 
-    public Choices(Questions aQuestion,String aChoiceOneCtn, Integer aChoiceOneVal, String aChoiceTwoCtn ,
-                   Integer aChoiceTwoVal, String aChoiceThreeCtn ,Integer aChoiceThreeVal, String aChoiceFourCtn ,
-                   Integer aChoiceFourVal) {
+    public Choices(Questions aQuestion,String aChoiceOneCtn, boolean aChoiceOneVal, String aChoiceTwoCtn ,
+                   boolean aChoiceTwoVal, String aChoiceThreeCtn ,boolean aChoiceThreeVal, String aChoiceFourCtn ,
+                   boolean aChoiceFourVal) {
         this.question = aQuestion;
         this.choiceOneCtn = aChoiceOneCtn;
         this.choiceOneVal = aChoiceOneVal;
@@ -43,16 +43,16 @@ public class Choices implements Serializable {
     private String choiceOneCtn;
 
     @Column(name = "choice_one_value")
-    private Integer choiceOneVal;
+    private boolean choiceOneVal;
 
     @Column(name = "choice_two_content")
     private String choiceTwoCtn;
 
     @Column(name = "choice_two_value")
-    private Integer choiceTwoVal;
+    private boolean choiceTwoVal;
 
     @Column(name = "choice_three_value")
-    private Integer choiceThreeVal;
+    private boolean choiceThreeVal;
 
     @Column(name = "choice_three_content")
     private String choiceThreeCtn;
@@ -61,7 +61,7 @@ public class Choices implements Serializable {
     private String choiceFourCtn;
 
     @Column(name = "choice_four_value")
-    private Integer choiceFourVal;
+    private boolean choiceFourVal;
 
     @Override
     public String toString() {
@@ -99,37 +99,32 @@ public class Choices implements Serializable {
         return choicesId;
     }
 
+    public void setChoicesId(Integer choicesId) {
+        this.choicesId = choicesId;
+    }
+
     public Questions getQuestion() {
         return question;
-
     }
 
     public void setQuestion(Questions question) {
         this.question = question;
     }
 
-    public Integer getChoiceOneVal() {
+    public String getChoiceOneCtn() {
+        return choiceOneCtn;
+    }
+
+    public void setChoiceOneCtn(String choiceOneCtn) {
+        this.choiceOneCtn = choiceOneCtn;
+    }
+
+    public boolean isChoiceOneVal() {
         return choiceOneVal;
     }
 
-    public void setChoiceOneVal(Integer choiceOneVal) {
+    public void setChoiceOneVal(boolean choiceOneVal) {
         this.choiceOneVal = choiceOneVal;
-    }
-
-    public Integer getChoiceThreeVal() {
-        return choiceThreeVal;
-    }
-
-    public void setChoiceThreeVal(Integer choiceThreeVal) {
-        this.choiceThreeVal = choiceThreeVal;
-    }
-
-    public Integer getChoiceTwoVal() {
-        return choiceTwoVal;
-    }
-
-    public void setChoiceTwoVal(Integer choiceTwoVal) {
-        this.choiceTwoVal = choiceTwoVal;
     }
 
     public String getChoiceTwoCtn() {
@@ -140,12 +135,20 @@ public class Choices implements Serializable {
         this.choiceTwoCtn = choiceTwoCtn;
     }
 
-    public String getChoiceOneCtn() {
-        return choiceOneCtn;
+    public boolean isChoiceTwoVal() {
+        return choiceTwoVal;
     }
 
-    public void setChoiceOneCtn(String choiceOneCtn) {
-        this.choiceOneCtn = choiceOneCtn;
+    public void setChoiceTwoVal(boolean choiceTwoVal) {
+        this.choiceTwoVal = choiceTwoVal;
+    }
+
+    public boolean isChoiceThreeVal() {
+        return choiceThreeVal;
+    }
+
+    public void setChoiceThreeVal(boolean choiceThreeVal) {
+        this.choiceThreeVal = choiceThreeVal;
     }
 
     public String getChoiceThreeCtn() {
@@ -164,11 +167,11 @@ public class Choices implements Serializable {
         this.choiceFourCtn = choiceFourCtn;
     }
 
-    public Integer getChoiceFourVal() {
+    public boolean isChoiceFourVal() {
         return choiceFourVal;
     }
 
-    public void setChoiceFourVal(Integer choiceFourVal) {
+    public void setChoiceFourVal(boolean choiceFourVal) {
         this.choiceFourVal = choiceFourVal;
     }
 }

@@ -108,5 +108,6 @@
         <module>evaluation-it-api</module>
         <module>evaluation-it-dao</module>
         <module>evaluation-it-metier</module>
+        <module>evaluation-it-loader</module>
     </modules>
 </project>
