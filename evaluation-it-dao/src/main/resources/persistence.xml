@@ -8,7 +8,6 @@
 
         <!-- Those beans are linked to the database -->
         <class>com.fraoucene.evaluation.it.api.model.Categories</class>
-        <class>com.fraoucene.evaluation.it.api.model.Choices</class>
         <class>com.fraoucene.evaluation.it.api.model.QuestionMultiChoices</class>
         <class>com.fraoucene.evaluation.it.api.model.Questions</class>
     </persistence-unit>

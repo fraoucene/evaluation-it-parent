@@ -30,15 +30,34 @@ public class QuestionMultiChoicesServiceImpl implements QuestionMultiChoicesServ
     }
 
     @Override
+    public void createOrUpdateQuestionMultiChoice(QuestionMultiChoices qcm) {
+        QuestionMultiChoices existingQcm = questionMultiChoicesRepository.findByTitle(qcm.getTitle());
+        if(existingQcm == null){
+            questionMultiChoicesRepository.save(qcm);
+        }else {
+            System.out.print("::::::::::::QCM Already Exist::::::::::::::::::::+\n");
+            System.out.print(qcm.getTitle()+"\n");
+            System.out.print(":::::::::::::::::::::::::::::::::::::::::::h::::::\n");
+        }
+
+    }
+
+    @Override
     public void updateQuestionMultiChoice(QuestionMultiChoices qcm) {
         questionMultiChoicesRepository.save(qcm);
 
     }
 
     @Override
-    public QuestionMultiChoices getQuestionMultiChoices(Integer id) {
+    public QuestionMultiChoices getQuestionMultiChoices(Long id) {
         return questionMultiChoicesRepository.findOne(id);
     }
+
+    @Override
+    public QuestionMultiChoices getQuestionMultiChoicesByTitle(String aQcmTitle) {
+        return questionMultiChoicesRepository.findByTitle(aQcmTitle);
+    }
+
 
     @Override
     public Iterable<QuestionMultiChoices> getAllQcm() {
@@ -47,12 +66,12 @@ public class QuestionMultiChoicesServiceImpl implements QuestionMultiChoicesServ
     }
 
     @Override
-    public boolean isQcm(Integer id) {
+    public boolean isQcm(Long id) {
         return questionMultiChoicesRepository.exists(id);
     }
 
     @Override
-    public void deleteQuestionMultiChoices(Integer id) {
+    public void deleteQuestionMultiChoices(Long id) {
         questionMultiChoicesRepository.delete(id);
 
         // Count TrackList records

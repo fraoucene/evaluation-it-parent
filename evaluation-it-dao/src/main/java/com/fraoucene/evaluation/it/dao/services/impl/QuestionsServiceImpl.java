@@ -4,7 +4,6 @@ import com.fraoucene.evaluation.it.api.model.QuestionMultiChoices;
 import com.fraoucene.evaluation.it.api.model.Questions;
 import com.fraoucene.evaluation.it.api.services.QuestionsService;
 import com.fraoucene.evaluation.it.dao.repositories.QuestionsRepository;
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,17 +32,34 @@ public class QuestionsServiceImpl implements QuestionsService {
     }
 
     @Override
+    public void createOrUpdateQuestion(Questions question) {
+        Questions existingQuestion = questionsRepository.findByContent(question.getContent());
+        if (existingQuestion == null) {
+            questionsRepository.save(question);
+        }else {
+            System.out.print(":::::::::::: Questions  Already Exist::::::::::::::::::::\n");
+            System.out.print(question.getContent()+"\n");
+            System.out.print(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+        }
+    }
+
+    @Override
     public void updateQuestion(Questions question) {
         questionsRepository.save(question);
     }
 
     @Override
-    public Questions getQuestion(Integer id) {
+    public Questions getQuestion(Long id) {
         return questionsRepository.findOne(id);
     }
 
     @Override
-    public boolean isQuestion(Integer id) {
+    public Questions getQuestionByContent(String aContent) {
+        return questionsRepository.findByContent(aContent);
+    }
+
+    @Override
+    public boolean isQuestion(Long id) {
         return questionsRepository.exists(id);
     }
 
@@ -54,7 +70,7 @@ public class QuestionsServiceImpl implements QuestionsService {
     }
 
     @Override
-    public void deleteQuestion(Integer id) {
+    public void deleteQuestion(Long id) {
         questionsRepository.delete(id);
 
         // Count TrackList records

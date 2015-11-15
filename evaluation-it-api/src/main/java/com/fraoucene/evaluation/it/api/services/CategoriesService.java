@@ -12,14 +12,18 @@ public interface CategoriesService {
 
     void createCategory(Categories category);
 
-    boolean isCategory(Integer id);
+    void createOrUpdateCategory(Categories category);
 
-    Categories getCategory(Integer id);
+    boolean isCategory(Long id);
+
+    Categories getCategory(Long id);
+
+    Categories getCategoryByTitle(String aCategooryTitle);
 
     Iterable<Categories> getAllCategories();
 
     void updateCategory(Categories category);
 
-    void deleteCategory(Integer id);
+    void deleteCategory(Long id);
 
 }

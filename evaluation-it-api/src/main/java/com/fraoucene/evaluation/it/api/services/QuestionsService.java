@@ -2,7 +2,6 @@ package com.fraoucene.evaluation.it.api.services;
 
 import com.fraoucene.evaluation.it.api.model.QuestionMultiChoices;
 import com.fraoucene.evaluation.it.api.model.Questions;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,15 +13,19 @@ public interface QuestionsService {
 
     void addQuestion(Questions question);
 
+    void createOrUpdateQuestion(Questions question);
+
     void updateQuestion(Questions question);
 
-    Questions getQuestion(Integer id);
+    Questions getQuestion(Long id);
 
-    boolean isQuestion(Integer id);
+    Questions getQuestionByContent(String aContent);
+
+    boolean isQuestion(Long id);
 
     Iterable<Questions> getAllQuestions();
 
-    void deleteQuestion(Integer id);
+    void deleteQuestion(Long id);
 
     List<Questions> getQuestionsByQcmId(QuestionMultiChoices qcm);
 }

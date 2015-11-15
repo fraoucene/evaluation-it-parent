@@ -29,13 +29,31 @@ public class CategoriesServiceImpl implements CategoriesService {
     }
 
     @Override
-    public boolean isCategory(Integer id) {
-        return categoryRepository.exists(id);
+    public void createOrUpdateCategory(Categories category) {
+        Categories existingCategory = categoryRepository.findByTitle(category.getTitle());
+        if (existingCategory == null){
+            categoryRepository.save(category);
+        }else {
+            System.out.print("::::::::::::Categories Already Exist::::::::::::::::::::\n");
+            System.out.print(category.getTitle()+"\n");
+            System.out.print("::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+        }
     }
 
     @Override
-    public Categories getCategory(Integer id) {
+    public boolean isCategory(Long id) {
+        return categoryRepository.exists(id);
+    }
+
+
+    @Override
+    public Categories getCategory(Long id) {
         return categoryRepository.findOne(id);
+    }
+
+    @Override
+    public Categories getCategoryByTitle(String aCategooryTitle) {
+        return  categoryRepository.findByTitle(aCategooryTitle);
     }
 
     @Override
@@ -49,7 +67,7 @@ public class CategoriesServiceImpl implements CategoriesService {
         categoryRepository.save(category);
     }
 
-    public void deleteCategory(Integer id) {
+    public void deleteCategory(Long id) {
         categoryRepository.delete(id);
 
         // And finally count records

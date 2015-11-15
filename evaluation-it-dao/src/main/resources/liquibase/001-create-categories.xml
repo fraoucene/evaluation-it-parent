@@ -11,37 +11,43 @@
         <createSequence schemaName="evaluation_it" sequenceName="SEQ_QCM"/>
 
         <createTable schemaName="evaluation_it" tableName="CATEGORIES">
-            <column name="categories_id" type="integer" defaultValueComputed="nextval('evaluation_it.SEQ_CATEGORIES')">
+            <column name="categories_id" type="BIGINT" defaultValueComputed="nextval('evaluation_it.SEQ_CATEGORIES')">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="CATEGORIES_DBID_PK"/>
             </column>
-            <column name="title" type="varchar(100)">
+            <column name="title" type="varchar(200)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
         <createTable schemaName="evaluation_it" tableName="QCM">
-            <column name="qcm_id" type="integer" defaultValueComputed="nextval('evaluation_it.SEQ_QCM')">
+            <column name="qcm_id" type="BIGINT" defaultValueComputed="nextval('evaluation_it.SEQ_QCM')">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="QCM_DBID_PK"/>
             </column>
-            <column name="categories_id" type="integer">
+            <column name="categories_id" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="QCM_DBID_FK" />
             </column>
-            <column name="title" type="varchar(100)">
+            <column name="title" type="varchar(200)">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="varchar(500)">
+            <column name="description" type="varchar(800)">
                 <constraints nullable="false"/>
             </column>
-            <column name="level" type="integer">
+            <column name="connaissances_mesurees" type="varchar(800)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="metiers_vises" type="varchar(800)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="level" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="language" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="creation_date" type="timestamp">
+            <column name="creation_date" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="duration" type="integer">
+            <column name="duration" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -56,27 +62,45 @@
 
     </changeSet>
 
-
     <changeSet id="create-question-table" author="fraoucene">
 
         <createSequence schemaName="evaluation_it" sequenceName="SEQ_QUESTIONS"/>
 
         <createTable schemaName="evaluation_it" tableName="QUESTIONS">
-            <column name="questions_id" type="integer" defaultValueComputed="nextval('evaluation_it.SEQ_QUESTIONS')">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="QUESTIONS_DBID_PK"/>
+            <column name="questions_id" type="BIGINT" defaultValueComputed="nextval('evaluation_it.SEQ_QUESTIONS')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CHOICES_DBID_PK"/>
             </column>
-            <column name="qcm_id" type="integer">
+            <column name="qcm_id" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="QUESTIONS_DBID_FK" />
             </column>
-            <column name="content" type="varchar(300)">
+            <column name="content" type="varchar(500)">
                 <constraints nullable="false"/>
             </column>
-            <column name="response_content" type="varchar(300)">
+            <column name="choice_one" type="varchar(500)">
                 <constraints nullable="false"/>
             </column>
-            <column name="response" type="integer">
+            <column name="choice_one_value" type="boolean">
                 <constraints nullable="false"/>
             </column>
+            <column name="choice_two" type="varchar(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="choice_two_value" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="choice_three" type="varchar(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="choice_three_value" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="choice_four" type="varchar(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="choice_four_value" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="qcm_id"
@@ -85,54 +109,6 @@
                                  constraintName="QUESTIONS_DBID_FK"
                                  referencedColumnNames="qcm_id"
                                  referencedTableName="QCM"
-                                 referencedTableSchemaName="evaluation_it"/>
-
-    </changeSet>
-
-    <changeSet id="create-choices-table" author="fraoucene">
-
-        <createSequence schemaName="evaluation_it" sequenceName="SEQ_CHOICES"/>
-
-        <createTable schemaName="evaluation_it" tableName="CHOICES">
-            <column name="choices_id" type="integer" defaultValueComputed="nextval('evaluation_it.SEQ_CHOICES')">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="CHOICES_DBID_PK"/>
-            </column>
-            <column name="questions_id" type="integer">
-                <constraints nullable="false" foreignKeyName="CHOICES_DBID_FK" />
-            </column>
-            <column name="choice_one_content" type="varchar(500)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="choice_one_value" type="integer">
-                <constraints nullable="false"/>
-            </column>
-            <column name="choice_two_content" type="varchar(500)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="choice_two_value" type="integer">
-                <constraints nullable="false"/>
-            </column>
-            <column name="choice_three_content" type="varchar(500)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="choice_three_value" type="integer">
-                <constraints nullable="false"/>
-            </column>
-            <column name="choice_four_content" type="varchar(500)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="choice_four_value" type="integer">
-                <constraints nullable="false"/>
-            </column>
-
-        </createTable>
-
-        <addForeignKeyConstraint baseColumnNames="questions_id"
-                                 baseTableName="CHOICES"
-                                 baseTableSchemaName="evaluation_it"
-                                 constraintName="CHOICES_DBID_FK"
-                                 referencedColumnNames="questions_id"
-                                 referencedTableName="QUESTIONS"
                                  referencedTableSchemaName="evaluation_it"/>
 
     </changeSet>

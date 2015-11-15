@@ -14,6 +14,7 @@ import java.util.List;
 
 
 @Repository
-public interface QuestionMultiChoicesRepository extends CrudRepository<QuestionMultiChoices,Integer> {
+public interface QuestionMultiChoicesRepository extends CrudRepository<QuestionMultiChoices,Long> {
     List<QuestionMultiChoices> getQuestionMultiChoicesByCategory(Categories category);
+    QuestionMultiChoices findByTitle(String aQcmTitle);
 }

@@ -21,7 +21,7 @@ public class Categories implements Serializable{
     }
 
 
-    public Integer getCategoriesId() {
+    public Long getCategoriesId() {
         return categoriesId;
     }
 
@@ -30,7 +30,7 @@ public class Categories implements Serializable{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @SequenceGenerator(name = "pk_sequence", sequenceName = "evaluation_it.SEQ_CATEGORIES")
     @Column(name = "categories_id")
-    private Integer categoriesId;// id for uniqueness
+    private Long categoriesId;// id for uniqueness
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
     private Set<QuestionMultiChoices> questionMultiChoices = new HashSet<QuestionMultiChoices>(0);

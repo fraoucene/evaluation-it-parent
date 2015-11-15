@@ -16,68 +16,147 @@ public class Questions implements Serializable {
     public Questions() {
     }
 
-    public Questions(QuestionMultiChoices qcm, Integer response, String responseContent, String content) {
-        this.qcm = qcm;
-        this.response = response;
-        this.responseContent = responseContent;
+    public Questions(String content, QuestionMultiChoices qcm, String choiceOne, String choiceTwo, String choiceThree,
+                     String choiceFour, boolean choiceOneVal, boolean choiceTwoVal, boolean choiceThreeVal,
+                     boolean choiceFourVal) {
+
         this.content = content;
+        this.qcm = qcm;
+        this.choiceOne = choiceOne;
+        this.choiceTwo = choiceTwo;
+        this.choiceThree = choiceThree;
+        this.choiceFour = choiceFour;
+        this.choiceOneVal = choiceOneVal;
+        this.choiceTwoVal = choiceTwoVal;
+        this.choiceThreeVal = choiceThreeVal;
+        this.choiceFourVal = choiceFourVal;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @SequenceGenerator(name = "pk_sequence", sequenceName = "evaluation_it.SEQ_QUESTIONS")
     @Column(name = "questions_id")
-    private Integer questionsId;// id for uniqueness
+    private Long questionsId;// id for uniqueness
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "qcm_id", referencedColumnName = "qcm_id")})
     private QuestionMultiChoices qcm;
 
-    @Column(name = "response")
-    private Integer response;
-
-    @Column(name = "response_content")
-    private String responseContent;
 
     @Column(name = "content")
     private String content;
+
+    @Column(name = "choice_one")
+    private String choiceOne;
+
+    @Column(name = "choice_two")
+    private String choiceTwo;
+
+    @Column(name = "choice_three")
+    private String choiceThree;
+
+    @Column(name = "choice_four")
+    private String choiceFour;
+
+    @Column(name = "choice_one_value")
+    private boolean choiceOneVal;
+
+    @Column(name = "choice_two_value")
+    private boolean choiceTwoVal;
+
+    @Column(name = "choice_three_value")
+    private boolean choiceThreeVal;
+
+    @Column(name = "choice_four_value")
+    private boolean choiceFourVal;
+
+    public Long getQuestionsId() {
+        return questionsId;
+    }
+
+    public void setQuestionsId(Long questionsId) {
+        this.questionsId = questionsId;
+    }
 
     public QuestionMultiChoices getQcm() {
         return qcm;
     }
 
-    public Integer getQuestionsId() {
-        return questionsId;
-    }
-
-
-    public void setQcm(QuestionMultiChoices aQcm) {
-        this.qcm = aQcm;
-    }
-
-    public Integer getResponse() {
-        return response;
-    }
-
-    public void setResponse(Integer aResponse) {
-        this.response = aResponse;
-    }
-
-    public String getResponseContent() {
-        return responseContent;
-    }
-
-    public void setResponseContent(String aResponseContent) {
-        this.responseContent = aResponseContent;
+    public void setQcm(QuestionMultiChoices qcm) {
+        this.qcm = qcm;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String aContent) {
-        this.content = aContent;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getChoiceOne() {
+        return choiceOne;
+    }
+
+    public void setChoiceOne(String choiceOne) {
+        this.choiceOne = choiceOne;
+    }
+
+    public String getChoiceTwo() {
+        return choiceTwo;
+    }
+
+    public void setChoiceTwo(String choiceTwo) {
+        this.choiceTwo = choiceTwo;
+    }
+
+    public String getChoiceThree() {
+        return choiceThree;
+    }
+
+    public void setChoiceThree(String choiceThree) {
+        this.choiceThree = choiceThree;
+    }
+
+    public String getChoiceFour() {
+        return choiceFour;
+    }
+
+    public void setChoiceFour(String choiceFour) {
+        this.choiceFour = choiceFour;
+    }
+
+    public boolean isChoiceOneVal() {
+        return choiceOneVal;
+    }
+
+    public void setChoiceOneVal(boolean choiceOneVal) {
+        this.choiceOneVal = choiceOneVal;
+    }
+
+    public boolean isChoiceTwoVal() {
+        return choiceTwoVal;
+    }
+
+    public void setChoiceTwoVal(boolean choiceTwoVal) {
+        this.choiceTwoVal = choiceTwoVal;
+    }
+
+    public boolean isChoiceThreeVal() {
+        return choiceThreeVal;
+    }
+
+    public void setChoiceThreeVal(boolean choiceThreeVal) {
+        this.choiceThreeVal = choiceThreeVal;
+    }
+
+    public boolean isChoiceFourVal() {
+        return choiceFourVal;
+    }
+
+    public void setChoiceFourVal(boolean choiceFourVal) {
+        this.choiceFourVal = choiceFourVal;
     }
 
     @Override
@@ -89,8 +168,6 @@ public class Questions implements Serializable {
 
         if (!questionsId.equals(questions.questionsId)) return false;
         if (!qcm.equals(questions.qcm)) return false;
-        if (!response.equals(questions.response)) return false;
-        if (!responseContent.equals(questions.responseContent)) return false;
         return content.equals(questions.content);
 
     }
@@ -99,8 +176,6 @@ public class Questions implements Serializable {
     public int hashCode() {
         int result = questionsId.hashCode();
         result = 31 * result + qcm.hashCode();
-        result = 31 * result + response.hashCode();
-        result = 31 * result + responseContent.hashCode();
         result = 31 * result + content.hashCode();
         return result;
     }
@@ -108,11 +183,16 @@ public class Questions implements Serializable {
     @Override
     public String toString() {
         return "Questions{" +
-                "questionsId=" + questionsId +
-                ", qcm=" + qcm +
-                ", response=" + response +
-                ", responseContent='" + responseContent + '\'' +
-                ", content='" + content + '\'' +
+                "content='" + content + '\'' +
+                ", choiceOne='" + choiceOne + '\'' +
+                ", choiceTwo='" + choiceTwo + '\'' +
+                ", choiceThree='" + choiceThree + '\'' +
+                ", choiceFour='" + choiceFour + '\'' +
+                ", choiceOneVal=" + choiceOneVal +
+                ", choiceTwoVal=" + choiceTwoVal +
+                ", choiceThreeVal=" + choiceThreeVal +
+                ", choiceFourVal=" + choiceFourVal +
+                ", questionsId=" + questionsId +
                 '}';
     }
 }

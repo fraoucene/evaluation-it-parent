@@ -2,7 +2,6 @@ package com.fraoucene.evaluation.it.api.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,29 +20,32 @@ public class QuestionMultiChoices implements Serializable {
 
     }
 
-    public QuestionMultiChoices(Categories aCategory, String aTitle, String aDescription, Integer aLevel,
-                                String aLanguage, Integer aDuration, Date aCreationDate) {
-        this.category = aCategory;
-        this.title = aTitle;
-        this.description = aDescription;
-        this.level = aLevel;
-        this.language = aLanguage;
-        this.duration = aDuration;
-        this.creationDate = aCreationDate;
+    public QuestionMultiChoices(Categories category, String title, String description, String metiersVises,
+                                String connaissancesMesurees, Long level, String language,
+                                Long duration) {
+        this.category = category;
+        this.title = title;
+        this.description = description;
+        this.metiersVises = metiersVises;
+        this.connaissancesMesurees = connaissancesMesurees;
+        this.level = level;
+        this.language = language;
+        this.duration = duration;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @SequenceGenerator(name = "pk_sequence", sequenceName = "evaluation_it.SEQ_QCM")
     @Column(name = "qcm_id")
-    private Integer questionMultiChoicesId;// id for uniqueness
+    private Long questionMultiChoicesId;// id for uniqueness
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "categories_id", referencedColumnName = "categories_id")})
     private Categories category;
 
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "qcm", cascade = CascadeType.ALL)
+    private Set<Questions> questions = new HashSet<Questions>(0);
 
     @Column(name = "title")
     private String title;
@@ -51,87 +53,110 @@ public class QuestionMultiChoices implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "metiers_vises")
+    private String metiersVises;
+
+    @Column(name = "connaissances_mesurees")
+    private String connaissancesMesurees;
+
     @Column(name = "level")
-    private Integer level;
+    private Long level;
 
     @Column(name = "language")
     private String language;
 
     @Column(name = "duration")
-    private Integer duration;
+    private Long duration;
 
     @Column(name = "creation_date")
-    private Date creationDate;
+    private Long creationDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "qcm", cascade = CascadeType.ALL)
-    private Set<Questions> questions = new HashSet<Questions>(0);
-
-    public Set<Questions> getQuestions() {
-        return questions;
+    public Long getDuration() {
+        return duration;
     }
 
-    public void setQuestions(Set<Questions> aQuestions) {
-        this.questions = aQuestions;
+    public void setDuration(Long duration) {
+        this.duration = duration;
     }
 
-    public void setCategory(Categories aCategory) {
-        this.category = aCategory;
+    public Long getQuestionMultiChoicesId() {
+        return questionMultiChoicesId;
+    }
+
+    public void setQuestionMultiChoicesId(Long questionMultiChoicesId) {
+        this.questionMultiChoicesId = questionMultiChoicesId;
     }
 
     public Categories getCategory() {
         return category;
     }
 
-    public Integer getQuestionMultiChoicesId() {
-        return questionMultiChoicesId;
+    public void setCategory(Categories category) {
+        this.category = category;
+    }
+
+    public Set<Questions> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<Questions> questions) {
+        this.questions = questions;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String aTitle) {
-        this.title = aTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String aDescription) {
-        this.description = aDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Integer getLevel() {
+    public String getMetiersVises() {
+        return metiersVises;
+    }
+
+    public void setMetiersVises(String metiersVises) {
+        this.metiersVises = metiersVises;
+    }
+
+    public String getConnaissancesMesurees() {
+        return connaissancesMesurees;
+    }
+
+    public void setConnaissancesMesurees(String connaissancesMesurees) {
+        this.connaissancesMesurees = connaissancesMesurees;
+    }
+
+    public Long getLevel() {
         return level;
     }
 
-    public void setLevel(Integer aLevel) {
-        this.level = aLevel;
+    public void setLevel(Long level) {
+        this.level = level;
     }
 
     public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(String aLanguage) {
-        this.language = aLanguage;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer aDuration) {
-        this.duration = aDuration;
-    }
-
-    public Date getCreationDate() {
+    public Long getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date aCreationDate) {
-        this.creationDate = aCreationDate;
+    public void setCreationDate(Long creationDate) {
+        this.creationDate = creationDate;
     }
 
     @Override
@@ -142,14 +167,7 @@ public class QuestionMultiChoices implements Serializable {
         QuestionMultiChoices that = (QuestionMultiChoices) o;
 
         if (!questionMultiChoicesId.equals(that.questionMultiChoicesId)) return false;
-        if (!category.equals(that.category)) return false;
-        if (!title.equals(that.title)) return false;
-        if (!description.equals(that.description)) return false;
-        if (!level.equals(that.level)) return false;
-        if (!language.equals(that.language)) return false;
-        if (!duration.equals(that.duration)) return false;
-        if (!creationDate.equals(that.creationDate)) return false;
-        return questions.equals(that.questions);
+        return category.equals(that.category);
 
     }
 
@@ -157,28 +175,22 @@ public class QuestionMultiChoices implements Serializable {
     public int hashCode() {
         int result = questionMultiChoicesId.hashCode();
         result = 31 * result + category.hashCode();
-        result = 31 * result + title.hashCode();
-        result = 31 * result + description.hashCode();
-        result = 31 * result + level.hashCode();
-        result = 31 * result + language.hashCode();
-        result = 31 * result + duration.hashCode();
-        result = 31 * result + creationDate.hashCode();
-        result = 31 * result + questions.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
         return "QuestionMultiChoices{" +
-                "questionMultiChoicesId=" + questionMultiChoicesId +
+                "duration=" + duration +
                 ", category=" + category +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", metiersVises='" + metiersVises + '\'' +
+                ", connaissancesMesurees='" + connaissancesMesurees + '\'' +
                 ", level=" + level +
                 ", language='" + language + '\'' +
-                ", duration=" + duration +
                 ", creationDate=" + creationDate +
-                ", questions=" + questions +
+                ", questionMultiChoicesId=" + questionMultiChoicesId +
                 '}';
     }
 }

@@ -12,15 +12,15 @@ public class Qcm implements Comparable  {
 
     private final String categoryName;
     private final String qcmName;
-    private final Integer duree;
-    private final Integer niveau;
+    private final Long duree;
+    private final Long niveau;
     private final String langue;
     private final String descripion;
     private final String connaissancesMesurees;
     private final String metiersVises;
     private final List<QuestionsJson> questionList;
 
-    public Qcm(String name, Integer duree, Integer niveau, String langue, String descripion,
+    public Qcm(String name, Long duree, Long niveau, String langue, String descripion,
                String category, String connaissancesMesurees1, String metiersVises1, List<QuestionsJson> aQuestionList) {
         this.qcmName = name;
         this.duree = duree;
@@ -36,8 +36,8 @@ public class Qcm implements Comparable  {
     @JsonCreator
     public Qcm(@JsonProperty("category_name") String aCategoryName,
                         @JsonProperty("qcm_name") String aQcmName,
-                        @JsonProperty("duree") Integer aDuree,
-                        @JsonProperty("niveau") Integer aNiveau,
+                        @JsonProperty("duree") Long aDuree,
+                        @JsonProperty("niveau") Long aNiveau,
                         @JsonProperty("langue") String aLangue,
                         @JsonProperty("description") String aDescripion,
                         @JsonProperty("connaissances_mesurees") String  aConnaissancesMesurees,
@@ -68,7 +68,7 @@ public class Qcm implements Comparable  {
         return qcmName;
     }
 
-    public Integer getDuree() {
+    public Long getDuree() {
         return duree;
     }
 
@@ -106,7 +106,7 @@ public class Qcm implements Comparable  {
         return result;
     }
 
-    public Integer getNiveau() {
+    public Long getNiveau() {
 
         return niveau;
     }
