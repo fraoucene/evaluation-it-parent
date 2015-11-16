@@ -11,7 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class LoaderMain {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LoaderMain.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoaderMain.class);
 
 
     public static void main(String[] args) {
@@ -19,11 +19,13 @@ public class LoaderMain {
             AnnotationConfigApplicationContext context
                     = new AnnotationConfigApplicationContext(SpringConfig.class);
             Loader loader = context.getBean(Loader.class);
-
-            loader.load();
+            for (String jsonName : args) {
+                LOGGER.info("--- Loadind file {}", jsonName);
+                loader.load(jsonName);
+            }
 
         } catch (Exception ex) {
-            LOG.error("Global error catched", ex);
+            LOGGER.error("Global error catched", ex);
             System.exit(30);
         }
     }

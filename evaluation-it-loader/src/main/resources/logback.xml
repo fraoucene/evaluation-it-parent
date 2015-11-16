@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- LOAD PROPERTIES FILE -->
+    <!-- <property file="${webmo.conf.dir}/webmo_logging.properties" /> -->
+
+    <!-- CONSOLE APPENDER -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %-5level [%thread] %logger{1} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- APPLICATION LOGFILE APPENDERS -->
+    <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>evaluation-it-loader.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>evaluation-it-loader.%d.log.gz</fileNamePattern>
+        </rollingPolicy>
+
+        <!--<encoder class="net.logstash.logback.encoder.LogstashEncoder"/>-->
+
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{0}: %msg%n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="app-log" />
+    </appender>
+
+    <!-- LOGGERS LEVEL -->
+    <logger name="com.fraoucene" level="INFO"/>
+    <logger name="com.fraoucene" level="INFO"/>
+    <logger name="com.fraoucene" level="INFO"/>
+
+    <logger name="org.springframework" level="WARN"/>
+
+    <root level="ERROR">
+       <appender-ref ref="stdout" />
+       <appender-ref ref="ASYNC" />
+    </root>
+
+</configuration>

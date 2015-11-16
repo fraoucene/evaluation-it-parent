@@ -1,6 +1,7 @@
 package com.fraoucene.evaluation.it.dao.repositories;
 
 import com.fraoucene.evaluation.it.api.model.Categories;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface CategoriesRepository extends CrudRepository<Categories, Long> {
+public interface CategoriesRepository extends CrudRepository<Categories, Long>, QueryDslPredicateExecutor<Categories> {
     Categories findByTitle(String aCategoryTitle);
 }

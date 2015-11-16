@@ -23,13 +23,14 @@
             spécifie explicitement, on évite les mauvaises surprises en cas d'oubli -->
         <maven.compiler.debug>true</maven.compiler.debug>
 
-        <springframework.version>4.0.6.RELEASE</springframework.version>
+        <springframework.version>4.1.6.RELEASE</springframework.version>
         <jackson.version>2.3.1</jackson.version>
         <google.guava.version>16.0.1</google.guava.version>
         <joda.time.version>2.3</joda.time.version>
         <slf4j.version>1.7.6</slf4j.version>
         <liquibase.version>3.1.1</liquibase.version>
         <junit.version>4.11</junit.version>
+        <logback.classic.version>1.1.2</logback.classic.version>
         <liquibase-driver>org.postgresql.Driver</liquibase-driver>
         <liquibase-url>jdbc:postgresql://localhost:5432/evaluation_it</liquibase-url>
         <liquibase-testurl>jdbc:postgresql://localhost:5432/evaluation_it_test</liquibase-testurl>
@@ -90,24 +91,26 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- ============================================= -->
+        <!-- LOGGING -->
+        <!-- ============================================= -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
+            <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.6.4</version>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.classic.version}</version>
+            <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <build>

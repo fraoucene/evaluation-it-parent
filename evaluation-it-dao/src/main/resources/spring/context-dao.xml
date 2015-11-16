@@ -50,7 +50,7 @@
                 true: Enable the logging of all the generated SQL statements (from HQL) to the console
                 false: Not output
                 -->
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
 
                 <!--
                 true: Format the generated SQL statement to make it more readable, but takes up more screen space.
