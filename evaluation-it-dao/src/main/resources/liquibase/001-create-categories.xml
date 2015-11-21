@@ -73,7 +73,7 @@
             <column name="qcm_id" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="QUESTIONS_DBID_FK" />
             </column>
-            <column name="content" type="varchar(500)">
+            <column name="content" type="varchar(800)">
                 <constraints nullable="false"/>
             </column>
             <column name="choice_one" type="varchar(500)">
