@@ -1,14 +1,11 @@
 package com.fraoucene.evaluation.it.dao.services.impl;
 
-import com.fraoucene.evaluation.it.api.model.Categories;
 import com.fraoucene.evaluation.it.api.model.QuestionMultiChoices;
 import com.fraoucene.evaluation.it.api.services.QuestionMultiChoicesService;
 import com.fraoucene.evaluation.it.dao.repositories.QuestionMultiChoicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Created by fraoucene on 27/10/2015.
@@ -22,7 +19,7 @@ public class QuestionMultiChoicesServiceImpl implements QuestionMultiChoicesServ
     QuestionMultiChoicesRepository questionMultiChoicesRepository;
 
     @Override
-    public void addQuestionMultiChoice(QuestionMultiChoices qcm) {
+    public void save(QuestionMultiChoices qcm) {
         questionMultiChoicesRepository.save(qcm);
 
         // Count TrackList records
@@ -78,8 +75,4 @@ public class QuestionMultiChoicesServiceImpl implements QuestionMultiChoicesServ
         System.out.println("Count QCM records: " + questionMultiChoicesRepository.count());
     }
 
-    @Override
-    public List<QuestionMultiChoices> getQCMByCategory(Categories category) {
-        return  questionMultiChoicesRepository.getQuestionMultiChoicesByCategory(category);
-    }
 }

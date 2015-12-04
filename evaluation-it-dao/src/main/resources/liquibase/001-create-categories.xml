@@ -23,9 +23,6 @@
             <column name="qcm_id" type="BIGINT" defaultValueComputed="nextval('evaluation_it.SEQ_QCM')">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="QCM_DBID_PK"/>
             </column>
-            <column name="categories_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="QCM_DBID_FK" />
-            </column>
             <column name="title" type="varchar(200)">
                 <constraints nullable="false"/>
             </column>
@@ -52,13 +49,36 @@
             </column>
         </createTable>
 
+    </changeSet>
+
+    <changeSet id="create-categories-qcm-table" author="fraoucene">
+
+        <createTable schemaName="evaluation_it" tableName="CATEGORIES_QCM">
+            <column name="categories_id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="qcm_id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+        </createTable>
+
         <addForeignKeyConstraint baseColumnNames="categories_id"
-                                 baseTableName="QCM"
+                                 baseTableName="CATEGORIES_QCM"
                                  baseTableSchemaName="evaluation_it"
-                                 constraintName="QCM_DBID_FK"
+                                 constraintName="FK_CATEGORIES_QCM_1"
                                  referencedColumnNames="categories_id"
                                  referencedTableName="CATEGORIES"
-                                 referencedTableSchemaName="evaluation_it"/>
+                                 referencedTableSchemaName="evaluation_it"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint baseColumnNames="qcm_id"
+                                 baseTableName="CATEGORIES_QCM"
+                                 baseTableSchemaName="evaluation_it"
+                                 constraintName="FK_CATEGORIES_QCM_2"
+                                 referencedColumnNames="qcm_id"
+                                 referencedTableName="QCM"
+                                 referencedTableSchemaName="evaluation_it"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
 
     </changeSet>
 
@@ -76,25 +96,25 @@
             <column name="content" type="varchar(800)">
                 <constraints nullable="false"/>
             </column>
-            <column name="choice_one" type="varchar(500)">
+            <column name="choice_one" type="varchar(600)">
                 <constraints nullable="false"/>
             </column>
             <column name="choice_one_value" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="choice_two" type="varchar(500)">
+            <column name="choice_two" type="varchar(600)">
                 <constraints nullable="false"/>
             </column>
             <column name="choice_two_value" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="choice_three" type="varchar(500)">
+            <column name="choice_three" type="varchar(600)">
                 <constraints nullable="false"/>
             </column>
             <column name="choice_three_value" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="choice_four" type="varchar(500)">
+            <column name="choice_four" type="varchar(600)">
                 <constraints nullable="false"/>
             </column>
             <column name="choice_four_value" type="boolean">

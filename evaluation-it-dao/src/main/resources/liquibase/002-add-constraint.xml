@@ -6,6 +6,7 @@
                    logicalFilePath="com/fraoucene/evaluation-it/db/changesets/002-add-constraint.xml">
 
     <changeSet id="add-constraint" author="fraoucene">
+
         <addUniqueConstraint columnNames="title"
                              constraintName="category_title"
                              schemaName="evaluation_it"
@@ -20,6 +21,12 @@
                              constraintName="const_title"
                              schemaName="evaluation_it"
                              tableName="QUESTIONS" />
+
+        <addUniqueConstraint columnNames="categories_id, qcm_id"
+                             constraintName="CATEGORIES_QCM_PK_UNIQUE_CONSTRAINT"
+                             schemaName="evaluation_it"
+                             tableName="CATEGORIES_QCM" />
+
     </changeSet>
 
 

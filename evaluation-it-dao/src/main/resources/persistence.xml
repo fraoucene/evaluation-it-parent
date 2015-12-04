@@ -10,5 +10,6 @@
         <class>com.fraoucene.evaluation.it.api.model.Categories</class>
         <class>com.fraoucene.evaluation.it.api.model.QuestionMultiChoices</class>
         <class>com.fraoucene.evaluation.it.api.model.Questions</class>
+        <class>com.fraoucene.evaluation.it.api.model.CategoriesQcm</class>
     </persistence-unit>
 </persistence>

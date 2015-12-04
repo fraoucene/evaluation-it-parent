@@ -1,9 +1,6 @@
 package com.fraoucene.evaluation.it.api.services;
 
-import com.fraoucene.evaluation.it.api.model.Categories;
 import com.fraoucene.evaluation.it.api.model.QuestionMultiChoices;
-
-import java.util.List;
 
 /**
  * Created by fraoucene on 27/10/2015.
@@ -11,7 +8,7 @@ import java.util.List;
 
 public interface QuestionMultiChoicesService {
 
-    void addQuestionMultiChoice(QuestionMultiChoices qcm);
+    void save(QuestionMultiChoices qcm);
 
     void createOrUpdateQuestionMultiChoice(QuestionMultiChoices qcm);
 
@@ -28,5 +25,4 @@ public interface QuestionMultiChoicesService {
 
     void deleteQuestionMultiChoices(Long id);
 
-    List<QuestionMultiChoices> getQCMByCategory(Categories category);
 }

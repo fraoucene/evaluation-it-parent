@@ -11,15 +11,34 @@
 
             var msg = /*[[${msg}]]*/ [];
             var about = /*[[${about}]]*/ [];
+            var categories = /*[[${categories}]]*/ [];
+            actus: /*[[${categories}]]*/ [],
 
 /*]]>*/
 </script>
 </head>
     <body>
         <div class="main">
-            <div class="home__rp"></div>
             <h2>Hello fraoucene</h2>
-            <div th:text="${msg}"></div>
+            <table style="border:1px solid #cccccc; padding:10px 0; " cellpadding="0" cellspacing="0">
+                <tr th:each="category: ${categories}">
+                    <td style="padding:5px;  background:red;" th:text="${category.title}">key</td>
+                    <td>
+                        <tr th:each="qcm: ${category.categoriesQcms}">
+                            <td style="padding:5px;" th:text="${qcm.questionMultiChoices.title}">key</td>
+                            <td >
+                                <ul th:each="question: ${qcm.questionMultiChoices.questions}">
+                                    <li style="padding:5px; background:rgba(93, 52, 28, 0.44);" th:text="${question.content}">key</li>
+                                    <li style="padding:5px;" th:text="${question.choiceOne}">key</li>
+                                    <li style="padding:5px;" th:text="${question.choiceTwo}">key</li>
+                                    <li style="padding:5px;" th:text="${question.choiceThree}">key</li>
+                                    <li style="padding:5px;" th:text="${question.choiceFour}">key</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </td>
+                </tr>
+            </table>
             <div th:text="${about}"></div>
             <div class="socials__rp"></div>
 

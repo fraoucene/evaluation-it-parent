@@ -1,5 +1,8 @@
 package com.fraoucene.evaluation.it.api.model;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Sets;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -17,43 +20,62 @@ public class Categories implements Serializable{
     }
 
     public Categories(String title) {
-        this.title = title;
+        this.setTitle(title);
     }
 
-
-    public Long getCategoriesId() {
-        return categoriesId;
-    }
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @SequenceGenerator(name = "pk_sequence", sequenceName = "evaluation_it.SEQ_CATEGORIES")
     @Column(name = "categories_id")
-    private Long categoriesId;// id for uniqueness
+    private Long categoriesId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
-    private Set<QuestionMultiChoices> questionMultiChoices = new HashSet<QuestionMultiChoices>(0);
+    @OneToMany( mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<CategoriesQcm> categoriesQcms = new HashSet<>();
 
     @Column(name = "title")
-    private String title;// tracklist's title
+    private String title;
+
+
+    public Long getCategoriesId() {
+        return categoriesId;
+    }
+
+    public void setCategoriesId(Long categoriesId) {
+        this.categoriesId = categoriesId;
+    }
+
+    public Set<CategoriesQcm> getCategoriesQcms() {
+        return categoriesQcms;
+    }
+
+    public void setCategoriesQcms(Set<CategoriesQcm> categoriesQcms) {
+        this.categoriesQcms = categoriesQcms;
+    }
 
     public String getTitle() {
         return title;
     }
 
-
-    public void setTitle(String aTitle) {
-        this.title = aTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Set<QuestionMultiChoices> getQcms() {
-        return this.questionMultiChoices;
+    public void addQcm(QuestionMultiChoices aQuestionMultiChoices){
+        CategoriesQcm categoriesQcm = new CategoriesQcm(this, aQuestionMultiChoices);
+        this.categoriesQcms.add(categoriesQcm);
     }
 
-    public void setQcms(Set<QuestionMultiChoices> aQuestionMultiChoices) {
-        this.questionMultiChoices = aQuestionMultiChoices;
+    public void removeQcm(final QuestionMultiChoices aQuestionMultiChoices){
+        this.categoriesQcms = Sets.filter(this.categoriesQcms, new Predicate<CategoriesQcm>() {
+            @Override
+            public boolean apply(CategoriesQcm aCategoriesQcm) {
+                return !aCategoriesQcm.getQuestionMultiChoices().equals(aQuestionMultiChoices);
+            }
+        });
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -62,17 +84,15 @@ public class Categories implements Serializable{
 
         Categories that = (Categories) o;
 
-        if (!categoriesId.equals(that.categoriesId)) return false;
-        if (!questionMultiChoices.equals(that.questionMultiChoices)) return false;
-        return title.equals(that.title);
+        if (categoriesId != null ? !categoriesId.equals(that.categoriesId) : that.categoriesId != null) return false;
+        return !(title != null ? !title.equals(that.title) : that.title != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = categoriesId.hashCode();
-        result = 31 * result + questionMultiChoices.hashCode();
-        result = 31 * result + title.hashCode();
+        int result = categoriesId != null ? categoriesId.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
         return result;
     }
 
@@ -80,7 +100,7 @@ public class Categories implements Serializable{
     public String toString() {
         return "Categories{" +
                 "categoriesId=" + categoriesId +
-                ", questionMultiChoices=" + questionMultiChoices +
+                ", categoriesQcms=" + categoriesQcms +
                 ", title='" + title + '\'' +
                 '}';
     }

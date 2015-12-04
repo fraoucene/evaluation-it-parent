@@ -3,6 +3,7 @@ package com.fraoucene.loader.main;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fraoucene.evaluation.it.api.model.Categories;
+import com.fraoucene.evaluation.it.api.model.CategoriesQcm;
 import com.fraoucene.evaluation.it.api.model.QuestionMultiChoices;
 import com.fraoucene.evaluation.it.api.model.Questions;
 import com.fraoucene.evaluation.it.api.services.CategoriesService;
@@ -12,6 +13,7 @@ import com.fraoucene.loader.model.Qcm;
 import com.fraoucene.loader.model.QcmData;
 import com.fraoucene.loader.model.QuestionsJson;
 import com.fraoucene.loader.utils.Utils;
+import com.google.common.collect.Sets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,15 +76,6 @@ public class Loader {
 
     public void saveQcm(Qcm qcm){
         String categoryName = qcm.getCategoryName();
-        Categories category = categoriesService.getCategoryByTitle(categoryName);
-
-        if (category == null){
-            category = new Categories(categoryName);
-            categoriesService.createCategory(category);
-            LOGGER.info("--- Creating Category  [{}]", category.getTitle());
-        }else{
-            LOGGER.info("--- Category  [{}] Already Exist", category.getTitle());
-        }
 
         String qcmName = qcm.getQcmName();
         Long duree = qcm.getDuree();
@@ -94,14 +87,34 @@ public class Loader {
 
         QuestionMultiChoices testQcm = questionMultiChoicesService.getQuestionMultiChoicesByTitle(qcmName);
         if (testQcm == null){
-            testQcm = new QuestionMultiChoices(category, qcmName, descripion, metiersVises,
+            testQcm = new QuestionMultiChoices(qcmName, descripion, metiersVises,
                     connaissancesMesurees, niveau, langue, duree);
             testQcm.setCreationDate(System.currentTimeMillis());
-            questionMultiChoicesService.addQuestionMultiChoice(testQcm);
+            questionMultiChoicesService.save(testQcm);
+            Set<QuestionMultiChoices> questionMultiChoicesSet = Sets.newHashSet();
+            questionMultiChoicesSet.add(testQcm);
+            Categories category = categoriesService.getCategoryByTitle(categoryName);
+            if (category == null){
+                category = new Categories(categoryName);
+                category.addQcm(testQcm);
+                categoriesService.createCategory(category);
+                LOGGER.info("--- Creating Category  [{}]", category.getTitle());
+            }else{
+                Set<CategoriesQcm> categoriesQcms = category.getCategoriesQcms();
+                categoriesService.deleteCategory(category.getCategoriesId());
+                category = new Categories(categoryName);
+                for (CategoriesQcm categoriesQcm : categoriesQcms) {
+                    category.addQcm(categoriesQcm.getQuestionMultiChoices());
+                }
+                category.addQcm(testQcm);
+                categoriesService.createCategory(category);
+                LOGGER.info("--- Category  [{}] Already Exist", category.getTitle());
+            }
+
             LOGGER.info("--- Add QCM  [[{}]]  to Category [[{}]]", testQcm.getTitle() ,category.getTitle());
         }
         else {
-            LOGGER.info("--- QCM  [{}] Already Exist  in Category [{}]", testQcm.getTitle() ,category.getTitle());
+            LOGGER.info("--- QCM  [{}] Already Exist", testQcm.getTitle());
         }
         List<QuestionsJson> questionList = qcm.getQuestionList();
         int questionNumber = 0;
@@ -121,12 +134,12 @@ public class Loader {
                 questions = new Questions(content, testQcm, choiceOne, choiceTwo, choiceThree, choiceFour,
                         choiceOneValue, choiceTwoValue, choiceThreeValue, choiceFourValue);
                 questionsService.addQuestion(questions);
-                LOGGER.info("--- Add Question Number [{}]  to QCMTest [{}] in Category [{}]", questionNumber, testQcm.getTitle() ,category.getTitle());
+                LOGGER.info("--- Add Question Number [{}]  to QCMTest [{}]", questionNumber, testQcm.getTitle());
             }
             else {
-                LOGGER.info("--- Question Number [{}] Already Exist in QCMTest [{}] for the Category [{}]", questionNumber, testQcm.getTitle() ,category.getTitle());
+                LOGGER.info("--- Question Number [{}] Already Exist in QCMTest [{}] ", questionNumber, testQcm.getTitle());
             }
         }
-        LOGGER.info("--- Number Question Added = [[{}]]  in QCMTest [[{}]] for the Category [[{}]]", questionList.size(), testQcm.getTitle() ,category.getTitle());
+        LOGGER.info("--- Number Question Added = [{}]  in QCMTest [{}]", questionList.size(), testQcm.getTitle());
     }
 }

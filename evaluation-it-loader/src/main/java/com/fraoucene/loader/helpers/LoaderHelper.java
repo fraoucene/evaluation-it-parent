@@ -53,10 +53,10 @@ public class LoaderHelper {
 
         QuestionMultiChoices testQcm = questionMultiChoicesService.getQuestionMultiChoicesByTitle(qcmName);
         if (testQcm == null){
-            testQcm = new QuestionMultiChoices(category, qcmName, descripion, metiersVises,
+            testQcm = new QuestionMultiChoices(qcmName, descripion, metiersVises,
                     connaissancesMesurees, niveau, langue, duree);
             testQcm.setCreationDate(System.currentTimeMillis());
-            questionMultiChoicesService.addQuestionMultiChoice(testQcm);
+            questionMultiChoicesService.save(testQcm);
         }
 
         List<QuestionsJson> questionList = qcm.getQuestionList();
