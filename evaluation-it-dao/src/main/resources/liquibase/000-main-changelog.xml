@@ -7,5 +7,6 @@
 
      <include file="001-create-categories.xml" relativeToChangelogFile="true"/>
      <include file="002-add-constraint.xml" relativeToChangelogFile="true"/>
+     <include file="003-create-companies.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

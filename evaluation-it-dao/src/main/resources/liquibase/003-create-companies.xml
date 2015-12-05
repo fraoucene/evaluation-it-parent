@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="com/fraoucene/evaluation-it/db/changesets/003-create-companies.xml">
+
+    <changeSet id="create-companies-table" author="fraoucene">
+
+        <createSequence schemaName="evaluation_it" sequenceName="SEQ_COMPANIES"/>
+        <createSequence schemaName="evaluation_it" sequenceName="SEQ_USERS"/>
+
+        <createTable schemaName="evaluation_it" tableName="COMPANIES">
+            <column name="company_id" type="BIGINT" defaultValueComputed="nextval('evaluation_it.SEQ_COMPANIES')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="COMPANIES_DBID_PK"/>
+            </column>
+            <column name="lastname" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstname" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_email" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ville" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable schemaName="evaluation_it" tableName="USERS">
+            <column name="user_id" type="BIGINT" defaultValueComputed="nextval('evaluation_it.SEQ_USERS')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="USERS_DBID_PK"/>
+            </column>
+            <column name="company_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="USERS_DBID_FK" />
+            </column>
+            <column name="civility" type="varchar(5)">
+                <constraints nullable="false" />
+            </column>
+            <column name="lastname" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstname" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_email" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="USERS"
+                                 baseTableSchemaName="evaluation_it"
+                                 constraintName="FK_USERS"
+                                 referencedColumnNames="company_id"
+                                 referencedTableName="COMPANIES"
+                                 referencedTableSchemaName="evaluation_it"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+
+</databaseChangeLog>

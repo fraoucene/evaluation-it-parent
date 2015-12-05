@@ -11,5 +11,7 @@
         <class>com.fraoucene.evaluation.it.api.model.QuestionMultiChoices</class>
         <class>com.fraoucene.evaluation.it.api.model.Questions</class>
         <class>com.fraoucene.evaluation.it.api.model.CategoriesQcm</class>
+        <class>com.fraoucene.evaluation.it.api.model.Companies</class>
+        <class>com.fraoucene.evaluation.it.api.model.Users</class>
     </persistence-unit>
 </persistence>

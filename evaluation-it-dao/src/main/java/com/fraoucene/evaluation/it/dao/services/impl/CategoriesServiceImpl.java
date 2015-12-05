@@ -3,6 +3,8 @@ package com.fraoucene.evaluation.it.dao.services.impl;
 import com.fraoucene.evaluation.it.api.model.Categories;
 import com.fraoucene.evaluation.it.api.services.CategoriesService;
 import com.fraoucene.evaluation.it.dao.repositories.CategoriesRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,17 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class CategoriesServiceImpl implements CategoriesService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CategoriesServiceImpl.class);
 
     @Autowired
-    CategoriesRepository categoryRepository;
-
+    private CategoriesRepository categoryRepository;
 
     @Override
     public void createCategory(Categories category) {
         categoryRepository.save(category);
-
-        // Count TrackList records
-        System.out.println("Count Categories records: " + categoryRepository.count());
+        LOGGER.warn("---- Count Categories records:  {}", categoryRepository.count());
 
     }
 
@@ -34,9 +34,9 @@ public class CategoriesServiceImpl implements CategoriesService {
         if (existingCategory == null){
             categoryRepository.save(category);
         }else {
-            System.out.print("::::::::::::Categories Already Exist::::::::::::::::::::\n");
-            System.out.print(category.getTitle()+"\n");
-            System.out.print("::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+            LOGGER.warn("::::::::::::Categories Already Exist::::::::::::::::::::");
+            System.out.print(category.getTitle() + "\n");
+            LOGGER.warn("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         }
     }
 
@@ -69,8 +69,6 @@ public class CategoriesServiceImpl implements CategoriesService {
 
     public void deleteCategory(Long id) {
         categoryRepository.delete(id);
-
-        // And finally count records
-        System.out.println("Count Categories records: " + categoryRepository.count());
+        LOGGER.warn("---- Count Categories records:  {}", categoryRepository.count());
     }
 }
